@@ -7,6 +7,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
 
+import { initDatabase, saveMemberAnalysis, markAsSentToSlack, closeDatabase } from './db';
+
 dotenv.config();
 
 const log = {
