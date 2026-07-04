@@ -7,7 +7,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
 
-import { initDatabase, saveMemberAnalysis, markAsSentToSlack, closeDatabase } from './db';
+import { initDatabase, saveMemberAnalysis, markAsSentToSlack, closeDatabase } from './db.js';
 
 dotenv.config();
 
@@ -26,9 +26,9 @@ class SlackAIAgent {
             socketMode: true,
             appToken: process.env.SLACK_APP_TOKEN
         });
-        this.WebClient = new WebClient(process.env.SLACK_BOT_TOKEN);
+        this.webClient = new WebClient(process.env.SLACK_BOT_TOKEN);
         this.openai = new ChatOpenAI({
-            model: "gpt-4",
+            model: "gpt-4o-mini",
             temperature: 0.3,
             apiKey: process.env.OPENAI_API_KEY
         });
